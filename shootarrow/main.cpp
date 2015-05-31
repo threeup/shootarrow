@@ -11,7 +11,7 @@
 #include <string>
 #include <cmath>
 #include "main.h"
-#include "core.h"
+#include "Core.h"
 #include "cleanup.h"
 #include "LTexture.h"
 
