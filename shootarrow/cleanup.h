@@ -9,10 +9,10 @@
 #include <SDL_image.h>
 #endif
 
-template<typename T, typename... Args> void cleanup(T *t, Args&&... args);
+void cleanup(SDL_Window *win);
+void cleanup(SDL_Renderer *ren);
+void cleanup(SDL_Texture *tex);
+void cleanup(SDL_Surface *surf);
+void cleanup(SDL_Joystick *gameCtrlr);
 
-template<> void cleanup<SDL_Window>(SDL_Window *win);
-template<> void cleanup<SDL_Renderer>(SDL_Renderer *ren);
-template<> void cleanup<SDL_Texture>(SDL_Texture *tex);
-template<> void cleanup<SDL_Surface>(SDL_Surface *surf);
-template<> void cleanup<SDL_Joystick>(SDL_Joystick *gameCtrlr);
+
