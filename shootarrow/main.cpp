@@ -6,7 +6,6 @@
 #include <SDL.h>
 #include <SDL_image.h>
 #endif
-
 #include <stdio.h>
 #include <string>
 #include <cmath>
@@ -15,12 +14,12 @@
 #include "cleanup.h"
 #include "LTexture.h"
 
-
 Core* gCore = NULL;
 
 //Screen dimension constants
 const int SCREEN_WIDTH = 640;
 const int SCREEN_HEIGHT = 480;
+
 
 bool init()
 {
@@ -59,7 +58,7 @@ bool init()
 		}
 
 		//Create window
-		gCore->gWindow = SDL_CreateWindow("SDL Tutorial", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN);
+		gCore->gWindow = SDL_CreateWindow("Shoot Arrow X", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN);
 		if (gCore->gWindow == NULL)
 		{
 			printf("Window could not be created! SDL Error: %s\n", SDL_GetError());
@@ -99,7 +98,7 @@ bool loadMedia()
 	bool success = true;
 
 	//Load arrow texture
-	if (!gCore->gArrowTexture.loadFromFile("arrow.png"))
+	if (!gCore->gArrowTexture.LoadFromFile(gCore->gRenderer, "arrow.png"))
 	{
 		printf("Failed to load arrow texture!\n");
 		success = false;
@@ -120,14 +119,14 @@ void close()
 int main(int argc, char* args[])
 {
 	bool success = true;
-	
+
 	if (success)
 	{
 		success = init();
 	}
 	if (!success)
 	{
-		printf("Failed to initialize!\n");	
+		printf("Failed to initialize!\n");
 	}
 	if (success)
 	{
@@ -137,12 +136,20 @@ int main(int argc, char* args[])
 	{
 		printf("Failed to load media!\n");
 	}
+	
+	//Main loop flag
+	bool quit = false;
 
-	if (success)
+	//Event handler
+	//SDL_Event e;
+
+	printf("start\n");
+	//While application is running
+	gCore->CoreStart();
+	while (!quit)
 	{
-		gCore->CoreLoop();
+		gCore->CoreLoopTick(quit);
 	}
-
 
 	printf("quit\n");
 

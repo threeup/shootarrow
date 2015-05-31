@@ -26,11 +26,16 @@ LTexture::~LTexture()
 	ClearData();
 }
 
-bool LTexture::loadFromFile(std::string path)
+bool LTexture::LoadFromFile(std::string path)
+{
+	return LoadFromFile(Core::GetInstance()->gRenderer, path);
+}
+
+bool LTexture::LoadFromFile(SDL_Renderer* renderer, std::string path)
 {
 	ClearData();
 
-	mRenderer = Core::GetInstance()->gRenderer;
+	mRenderer = renderer;
 	
 	SDL_Texture* newTexture = NULL;
 	SDL_Surface* loadedSurface = IMG_Load(path.c_str());

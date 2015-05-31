@@ -18,7 +18,8 @@ public:
 	LTexture();
 	~LTexture();
 
-	bool loadFromFile(std::string path);
+	bool LoadFromFile(std::string path);
+	bool LoadFromFile(SDL_Renderer* renderer, std::string path);
 
 #ifdef _SDL_TTF_H
 	//Creates image from font string

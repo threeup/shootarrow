@@ -3,7 +3,6 @@
 
 Entity::Entity()
 {
-	mIsVisible = false;
 }
 
 
@@ -13,7 +12,7 @@ Entity::~Entity()
 
 void Entity::LoadTexture(std::string s)
 {
-	if (mTexture.loadFromFile(s))
+	if (mTexture.LoadFromFile(s))
 	{
 		mIsVisible = true;
 	}

@@ -13,6 +13,12 @@ struct InputData {
 	int hatD;
 	int hatL;
 	int hatR;
+	InputData()
+	{
+		x = y = trig = 0;
+		btnX = btnO = btnJoy = btnTrig = 0;
+		hatU = hatD = hatL = hatR = 0;
+	}
 };
 
 #endif

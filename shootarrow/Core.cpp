@@ -58,64 +58,46 @@ void Core::ClearData()
 	gWindow = NULL;
 }
 
-
-void Core::CoreLoop()
+Actor* man;
+User* user0;
+User* user1;
+void Core::CoreStart()
 {
-	//Main loop flag
-	bool quit = false;
+
+	man = new Actor();
+	man->LoadTexture("arrow.png");
+	entityList.push_back(man);
+
+	user0 = new User();
+	user0->userActor = man;
+	userList.push_back(user0);
+	//user1 = new User();
+	//userList.push_back(user1);
+	printf("Core Start");
+}
 
 
-	//Normalized direction
-	int stickX = 0;
-	int stickY = 0;
-	int triggerVal = 0;
+void Core::CoreLoopTick(bool& quit)
+{
+	PollEvents(quit);
 
-	Actor man = Actor();
-	man.LoadTexture("arrow.png");
-	entityList.push_back(&man);
 
-	User user0 = User();
-	user0.userActor = &man;
-	userList.push_back(&user0);
-	User user1 = User();
-	userList.push_back(&user1);
+	//Clear screen
+	SDL_SetRenderDrawColor(gRenderer, 0xFF, 0xFF, 0xFF, 0xFF);
+	SDL_RenderClear(gRenderer);
 
-	//While application is running
-	while (!quit)
+
+
+	for (std::vector<Entity*>::const_iterator iterator = entityList.begin(), end = entityList.end();
+		iterator != end; 
+		++iterator) 
 	{
-		PollEvents(quit);
-
-
-		//Clear screen
-		SDL_SetRenderDrawColor(gRenderer, 0xFF, 0xFF, 0xFF, 0xFF);
-		SDL_RenderClear(gRenderer);
-
-		//Calculate angle
-		double joystickAngle = atan2((double)stickY, (double)stickX) * (180.0 / M_PI);
-
-		//Correct angle
-		if (stickX == 0 && stickY == 0)
-		{
-			joystickAngle = 0;
-		}
-
-		//Render joystick 8 way angle
-		if (triggerVal == 0)
-		{
-			//gArrowTexture.render((SCREEN_HEIGHT - gArrowTexture.getHeight()) / 2, (SCREEN_HEIGHT - gArrowTexture.getHeight()) / 2, NULL, joystickAngle);
-		}
-
-		for (std::vector<Entity*>::const_iterator iterator = entityList.begin(), end = entityList.end();
-			iterator != end; 
-			++iterator) 
-		{
-			Entity* entity = *iterator;
-			mCamera->DrawEntity(entity);
-		}
-		
-		//Update screen
-		SDL_RenderPresent(gRenderer);
+		Entity* entity = *iterator;
+		mCamera->DrawEntity(entity);
 	}
+		
+	//Update screen
+	SDL_RenderPresent(gRenderer);
 }
 
 void Core::PollEvents(bool &quit)

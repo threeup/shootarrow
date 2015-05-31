@@ -32,7 +32,8 @@ public:
 
 	static Core* GetInstance();
 	void ClearData();
-	void CoreLoop();
+	void CoreStart();
+	void CoreLoopTick(bool &quit);
 	void PollEvents(bool &quit);
 
 	Camera* mCamera;
