@@ -12,16 +12,16 @@ public:
 	void Draw();
 	void LoadTexture(std::string s);
 
-	int mPosX = 0;
-	int mPosY = 0;
-	int mPosZ = 0;
+	int mPosX;
+	int mPosY;
+	int mPosZ;
 
-	int mExtentsX = 0;
-	int mExtentsY = 0;
-	int mExtentsZ = 0;
+	int mExtentsX;
+	int mExtentsY;
+	int mExtentsZ;
 	
-	bool mIsVisible = false;
-	bool mIsCollidable = false;
+	bool mIsVisible;
+	bool mIsCollidable;
 
 	LTexture mTexture;
 };

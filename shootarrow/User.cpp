@@ -24,12 +24,10 @@ void User::HandleInput()
 	}
 	if (currentInput.x != 0)
 	{
-		userActor->mPosX += currentInput.x;
-		userActor->mPosX = clamp(userActor->mPosX, -100, 100);
-		printf("Input X %d\n",userActor->mPosX);
+		userActor->mPosX = clamp(userActor->mPosX + currentInput.x, -100, 100);
 	}
 	if (currentInput.y != 0)
 	{
-		userActor->mPosY += currentInput.y;
+		userActor->mPosY = clamp(userActor->mPosY + currentInput.y, -100, 100);
 	}
 }
