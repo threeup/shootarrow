@@ -44,6 +44,13 @@ Core* Core::GetInstance()
 	return pInstance;
 }
 
+void Core::CoreStart()
+{
+	mDirector = new Director();
+	mDirector->WorldStart();
+	mDirector->ActorStart();
+}
+
 void Core::ClearData()
 {
 	cleanup(gGameController);
@@ -57,23 +64,7 @@ void Core::ClearData()
 }
 
 
-void Core::CoreStart()
-{
-	Actor_ptr human(new Actor);
-	Actor_ptr aiman(new Actor);
-	human->LoadTexture("art/monkey.png");
-	aiman->LoadTexture("art/pig.png");
-	entityList.push_back(human);
-	entityList.push_back(aiman);
 
-
-	User_ptr user0(new User(false));
-	User_ptr user1(new User(true));
-	user0->userActor = human;
-	userList.push_back(user0);
-	user1->userActor = aiman;
-	userList.push_back(user1);
-}
 
 
 void Core::CoreLoopTick(bool& quit)
@@ -86,8 +77,17 @@ void Core::CoreLoopTick(bool& quit)
 	SDL_RenderClear(gRenderer);
 
 
+	for (std::vector<Entity_ptr>::const_iterator iterator = mDirector->worldList.begin(),
+		end = mDirector->worldList.end();
+		iterator != end;
+	++iterator)
+	{
+		Entity_ptr entity = *iterator;
+		mCamera->DrawEntity(entity);
+	}
 
-	for (std::vector<Entity_ptr>::const_iterator iterator = entityList.begin(), end = entityList.end();
+	for (std::vector<Entity_ptr>::const_iterator iterator = mDirector->actorList.begin(),
+		end = mDirector->actorList.end();
 		iterator != end; 
 		++iterator) 
 	{
@@ -104,7 +104,8 @@ void Core::PollEvents(bool &quit)
 	//Event handler
 	SDL_Event e;
 
-	for (std::vector<User_ptr>::const_iterator iterator = userList.begin(), end = userList.end();
+	for (std::vector<User_ptr>::const_iterator iterator = userList.begin(), 
+		end = userList.end();
 		iterator != end;
 		++iterator)
 	{

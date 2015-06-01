@@ -38,6 +38,9 @@ void Camera::DrawEntity(Entity_ptr e)
 
 	int x = e->mPosX - mCamPosX;
 	int y = e->mPosY - mCamPosY;
+
+	float scaleX = (float)e->mExtentsX / e->mTexture.getWidth();
+	float scaleY = (float)e->mExtentsY / e->mTexture.getHeight();
 	
-	e->mTexture.render(x, y, 0.2f, 0.2f, angle, center, flip);
+	e->mTexture.render(x, y, scaleX, scaleY, angle, center, flip);
 }

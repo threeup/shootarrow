@@ -1,7 +1,8 @@
 #include "Actor.h"
 
 
-Actor::Actor()
+Actor::Actor(int w, int h)
+	: Entity(w,h)
 {
 }
 

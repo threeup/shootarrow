@@ -5,7 +5,7 @@ class Actor :
 	public Entity
 {
 public:
-	Actor();
+	Actor(int w, int h);
 	~Actor();
 };
 

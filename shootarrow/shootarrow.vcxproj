@@ -99,9 +99,11 @@
     <ClCompile Include="code\Camera.cpp" />
     <ClCompile Include="code\cleanup.cpp" />
     <ClCompile Include="code\Core.cpp" />
+    <ClCompile Include="code\Director.cpp" />
     <ClCompile Include="code\Entity.cpp" />
     <ClCompile Include="code\LTexture.cpp" />
     <ClCompile Include="code\main.cpp" />
+    <ClCompile Include="code\Physics.cpp" />
     <ClCompile Include="code\User.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -109,11 +111,17 @@
     <ClInclude Include="code\Camera.h" />
     <ClInclude Include="code\cleanup.h" />
     <ClInclude Include="code\Core.h" />
+    <ClInclude Include="code\Director.h" />
     <ClInclude Include="code\Entity.h" />
+    <ClInclude Include="code\GenericGrid.h" />
     <ClInclude Include="code\InputData.h" />
     <ClInclude Include="code\LTexture.h" />
     <ClInclude Include="code\main.h" />
+    <ClInclude Include="code\Physics.h" />
     <ClInclude Include="code\User.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="code\map.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

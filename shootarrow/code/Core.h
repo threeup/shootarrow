@@ -12,6 +12,7 @@
 
 #include <vector>
 #include "LTexture.h"
+#include "Director.h"
 #include "Camera.h"
 #include "Entity.h"
 #include "User.h"
@@ -37,12 +38,13 @@ public:
 	void PollEvents(bool &quit);
 
 	Camera* mCamera;
+	Director* mDirector;
 	SDL_Window* gWindow;
 	SDL_Renderer* gRenderer;
 	SDL_Joystick* gGameController;
 
+
 	std::vector<User_ptr> userList;
-	std::vector<Entity_ptr> entityList;
 
 };
 

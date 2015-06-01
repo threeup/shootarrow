@@ -137,9 +137,12 @@ void LTexture::setAlpha(Uint8 alpha)
 void LTexture::render(int x, int y, float w, float h, double angle, SDL_Point* center, SDL_RendererFlip flip)
 {
 	//Set rendering space and render to screen
-	int width = mWidth*w;
-	int height = mHeight*h;
-	SDL_Rect renderQuad = { x-width/2, y-height/2, width, height };
+	float width = mWidth*w;
+	float height = mHeight*h;
+
+	int centerX = (int)roundf((float)x - width / 2);
+	int centerY = (int)roundf((float)y - height / 2);
+	SDL_Rect renderQuad = { centerX, centerY, (int)width, (int)height };
 
 	//Render to screen
 	SDL_RenderCopyEx(mRenderer, mTexture, NULL, &renderQuad, angle, center, flip);

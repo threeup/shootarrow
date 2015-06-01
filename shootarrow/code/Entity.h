@@ -7,10 +7,12 @@
 class Entity
 {
 public:
-	Entity();
+	Entity(int w, int h);
 	~Entity();
 
 	void Draw();
+	void SetPos(int x, int y);
+	void SetPos(int x, int y, int z);
 	void LoadTexture(std::string s);
 
 	int mPosX;
