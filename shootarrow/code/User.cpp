@@ -1,9 +1,11 @@
 #include "User.h"
-
+#include <ctime>
 
 User::User(bool isAI)
 {
 	mIsAI = isAI;
+	tick = 0;
+	start = std::clock();
 }
 
 
@@ -16,12 +18,16 @@ inline int clamp(int x, int a, int b)
 	return x < a ? a : (x > b ? b : x);
 }
 
+
 void User::DecideInput()
 {
-	static int tick = 0;
 	tick++;
 	if (tick > 200)
 	{
+		double duration = std::clock() - start;
+		double fps = duration / 200;
+		printf("fps%f\n", fps);
+		start = std::clock();
 		tick = 0;
 	}
 	else if (tick > 100)

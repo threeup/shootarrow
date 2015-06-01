@@ -15,5 +15,9 @@ public:
 	Actor* userActor;
 	InputData currentInput;
 	InputData lastInput;
+
+private:
+	int tick;
+	double start;
 };
 
