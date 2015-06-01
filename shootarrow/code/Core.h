@@ -39,11 +39,10 @@ public:
 	Camera* mCamera;
 	SDL_Window* gWindow;
 	SDL_Renderer* gRenderer;
-	LTexture gArrowTexture;
 	SDL_Joystick* gGameController;
 
-	std::vector<User*> userList;
-	std::vector<Entity*> entityList;
+	std::vector<User_ptr> userList;
+	std::vector<Entity_ptr> entityList;
 
 };
 

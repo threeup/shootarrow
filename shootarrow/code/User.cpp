@@ -22,15 +22,16 @@ inline int clamp(int x, int a, int b)
 void User::DecideInput()
 {
 	tick++;
-	if (tick > 200)
+	if (tick > 100)
 	{
 		double duration = std::clock() - start;
-		double fps = duration / 200;
+		double fps = duration / 100;
+		printf("duration%f\n", duration);
 		printf("fps%f\n", fps);
 		start = std::clock();
 		tick = 0;
 	}
-	else if (tick > 100)
+	else if (tick > 50)
 	{
 		currentInput.x = 1;
 		currentInput.y = 1;

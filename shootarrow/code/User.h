@@ -1,4 +1,5 @@
 #pragma once
+#include <memory>
 #include "Actor.h"
 #include "InputData.h"
 
@@ -12,7 +13,7 @@ public:
 	void HandleInput();
 
 	bool mIsAI;
-	Actor* userActor;
+	Actor_ptr userActor;
 	InputData currentInput;
 	InputData lastInput;
 
@@ -20,4 +21,6 @@ private:
 	int tick;
 	double start;
 };
+
+typedef std::shared_ptr<User> User_ptr;
 

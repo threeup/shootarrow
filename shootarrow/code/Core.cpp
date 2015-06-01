@@ -7,6 +7,7 @@
 #include <SDL_image.h>
 #endif
 
+#include <memory>
 #include <stdio.h>
 #include <string>
 #include <cmath>
@@ -45,9 +46,6 @@ Core* Core::GetInstance()
 
 void Core::ClearData()
 {
-	//Free loaded images
-	gArrowTexture.ClearData();
-
 	cleanup(gGameController);
 	gGameController = NULL;
 
@@ -58,27 +56,23 @@ void Core::ClearData()
 	gWindow = NULL;
 }
 
-Actor* human;
-Actor* aiman;
-User* user0;
-User* user1;
+
 void Core::CoreStart()
 {
-
-	human = new Actor();
+	Actor_ptr human(new Actor);
+	Actor_ptr aiman(new Actor);
 	human->LoadTexture("art/monkey.png");
-	aiman = new Actor();
 	aiman->LoadTexture("art/pig.png");
 	entityList.push_back(human);
 	entityList.push_back(aiman);
 
-	user0 = new User(false);
+
+	User_ptr user0(new User(false));
+	User_ptr user1(new User(true));
 	user0->userActor = human;
 	userList.push_back(user0);
-	user1 = new User(true);
 	user1->userActor = aiman;
 	userList.push_back(user1);
-	printf("Core Start");
 }
 
 
@@ -93,11 +87,11 @@ void Core::CoreLoopTick(bool& quit)
 
 
 
-	for (std::vector<Entity*>::const_iterator iterator = entityList.begin(), end = entityList.end();
+	for (std::vector<Entity_ptr>::const_iterator iterator = entityList.begin(), end = entityList.end();
 		iterator != end; 
 		++iterator) 
 	{
-		Entity* entity = *iterator;
+		Entity_ptr entity = *iterator;
 		mCamera->DrawEntity(entity);
 	}
 		
@@ -110,11 +104,11 @@ void Core::PollEvents(bool &quit)
 	//Event handler
 	SDL_Event e;
 
-	for (std::vector<User*>::const_iterator iterator = userList.begin(), end = userList.end();
+	for (std::vector<User_ptr>::const_iterator iterator = userList.begin(), end = userList.end();
 		iterator != end;
 		++iterator)
 	{
-		User* user = *iterator;
+		User_ptr user = *iterator;
 		user->lastInput = user->currentInput;
 	}
 
@@ -207,11 +201,11 @@ void Core::PollEvents(bool &quit)
 		}
 	}//end while
 
-	for (std::vector<User*>::const_iterator iterator = userList.begin(), end = userList.end();
+	for (std::vector<User_ptr>::const_iterator iterator = userList.begin(), end = userList.end();
 		iterator != end;
 		++iterator)
 	{
-		User* user = *iterator;
+		User_ptr user = *iterator;
 		if (user->mIsAI)
 		{
 			user->DecideInput();

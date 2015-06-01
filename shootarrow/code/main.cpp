@@ -97,13 +97,6 @@ bool loadMedia()
 	//Loading success flag
 	bool success = true;
 
-	//Load arrow texture
-	if (!gCore->gArrowTexture.LoadFromFile(gCore->gRenderer, "arrow.png"))
-	{
-		printf("Failed to load arrow texture!\n");
-		success = false;
-	}
-
 	return success;
 }
 

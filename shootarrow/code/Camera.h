@@ -8,7 +8,7 @@ public:
 	Camera();
 	~Camera();
 
-	void DrawEntity(Entity* e);
+	void DrawEntity(Entity_ptr e);
 
 	int mCamPosX;
 	int mCamPosY;

@@ -28,7 +28,7 @@ Camera::~Camera()
 
 
 
-void Camera::DrawEntity(Entity* e)
+void Camera::DrawEntity(Entity_ptr e)
 {
 	double angle = 0;
 	

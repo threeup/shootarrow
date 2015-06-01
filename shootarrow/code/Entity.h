@@ -1,5 +1,6 @@
 #pragma once
 
+#include <memory>
 #include <string>
 #include "LTexture.h"
 
@@ -26,3 +27,4 @@ public:
 	LTexture mTexture;
 };
 
+typedef std::shared_ptr<Entity> Entity_ptr;
