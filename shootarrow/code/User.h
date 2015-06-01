@@ -20,6 +20,7 @@ public:
 private:
 	int tick;
 	double start;
+	int decision;
 };
 
 typedef std::shared_ptr<User> User_ptr;
