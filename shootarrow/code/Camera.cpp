@@ -31,12 +31,13 @@ Camera::~Camera()
 void Camera::DrawEntity(Entity* e)
 {
 	double angle = 0;
-	SDL_Rect* clip = (SDL_Rect*)0;
+	
+	
 	SDL_Point* center = (SDL_Point*)0;
 	SDL_RendererFlip flip = SDL_FLIP_NONE;
 
 	int x = e->mPosX - mCamPosX;
 	int y = e->mPosY - mCamPosY;
-
-	e->mTexture.render(x, y, clip, angle, center, flip);
+	
+	e->mTexture.render(x, y, 0.2f, 0.2f, angle, center, flip);
 }

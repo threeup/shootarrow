@@ -15,13 +15,43 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="arrow.png">
+    <Image Include="art\monkey.png">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="shootarrow.bmp">
+    <Image Include="art\arrow.png">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="shootarrow.png">
+    <Image Include="art\elephant.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="art\giraffe.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="art\hippo.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="art\panda.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="art\parrot.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="art\penguin.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="art\pig.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="art\rabbit.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="art\shootarrow.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="art\shootarrow.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="art\snake.png">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>

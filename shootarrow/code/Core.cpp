@@ -58,21 +58,26 @@ void Core::ClearData()
 	gWindow = NULL;
 }
 
-Actor* man;
+Actor* human;
+Actor* aiman;
 User* user0;
 User* user1;
 void Core::CoreStart()
 {
 
-	man = new Actor();
-	man->LoadTexture("arrow.png");
-	entityList.push_back(man);
+	human = new Actor();
+	human->LoadTexture("art/monkey.png");
+	aiman = new Actor();
+	aiman->LoadTexture("art/pig.png");
+	entityList.push_back(human);
+	entityList.push_back(aiman);
 
-	user0 = new User();
-	user0->userActor = man;
+	user0 = new User(false);
+	user0->userActor = human;
 	userList.push_back(user0);
-	//user1 = new User();
-	//userList.push_back(user1);
+	user1 = new User(true);
+	user1->userActor = aiman;
+	userList.push_back(user1);
 	printf("Core Start");
 }
 
@@ -207,6 +212,10 @@ void Core::PollEvents(bool &quit)
 		++iterator)
 	{
 		User* user = *iterator;
+		if (user->mIsAI)
+		{
+			user->DecideInput();
+		}
 		user->HandleInput();
 	}
 }

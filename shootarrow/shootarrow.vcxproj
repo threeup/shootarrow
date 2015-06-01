@@ -80,9 +80,19 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <Image Include="arrow.png" />
-    <Image Include="shootarrow.bmp" />
-    <Image Include="shootarrow.png" />
+    <Image Include="art\arrow.png" />
+    <Image Include="art\elephant.png" />
+    <Image Include="art\giraffe.png" />
+    <Image Include="art\hippo.png" />
+    <Image Include="art\monkey.png" />
+    <Image Include="art\panda.png" />
+    <Image Include="art\parrot.png" />
+    <Image Include="art\penguin.png" />
+    <Image Include="art\pig.png" />
+    <Image Include="art\rabbit.png" />
+    <Image Include="art\shootarrow.bmp" />
+    <Image Include="art\shootarrow.png" />
+    <Image Include="art\snake.png" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="code\Actor.cpp" />

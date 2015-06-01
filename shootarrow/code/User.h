@@ -5,11 +5,13 @@
 class User
 {
 public:
-	User();
+	User(bool isAI);
 	~User();
 
+	void DecideInput();
 	void HandleInput();
 
+	bool mIsAI;
 	Actor* userActor;
 	InputData currentInput;
 	InputData lastInput;
