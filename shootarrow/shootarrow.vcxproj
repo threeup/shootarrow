@@ -52,12 +52,12 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>I:\lib\SDL2-2.0.3\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>I:\lib\gles_sdk\include;I:\lib\SDL2-2.0.3\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>I:\lib\SDL2-2.0.3\lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;SDL2_mixer.lib;SDL2_net.lib;SDL2_ttf.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>I:\lib\gles_sdk\x86;I:\lib\SDL2-2.0.3\lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;SDL2_mixer.lib;SDL2_net.lib;SDL2_ttf.lib;libEGL.lib;libGLESv2.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <SubSystem>Console</SubSystem>
     </Link>
   </ItemDefinitionGroup>
@@ -68,14 +68,14 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>I:\lib\SDL2-2.0.3\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>I:\lib\gles_sdk\include;I:\lib\SDL2-2.0.3\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalLibraryDirectories>I:\lib\SDL2-2.0.3\lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;SDL2_mixer.lib;SDL2_net.lib;SDL2_ttf.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>I:\lib\gles_sdk\x86;I:\lib\SDL2-2.0.3\lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;SDL2_mixer.lib;SDL2_net.lib;SDL2_ttf.lib;libEGL.lib;libGLESv2.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <SubSystem>Console</SubSystem>
     </Link>
   </ItemDefinitionGroup>
@@ -92,6 +92,7 @@
     <Image Include="art\rabbit.png" />
     <Image Include="art\shootarrow.bmp" />
     <Image Include="art\shootarrow.png" />
+    <Image Include="art\smoke.tga" />
     <Image Include="art\snake.png" />
   </ItemGroup>
   <ItemGroup>
@@ -101,10 +102,17 @@
     <ClCompile Include="code\Core.cpp" />
     <ClCompile Include="code\Director.cpp" />
     <ClCompile Include="code\Entity.cpp" />
+    <ClCompile Include="code\GLUtils.cpp" />
     <ClCompile Include="code\LTexture.cpp" />
     <ClCompile Include="code\main.cpp" />
     <ClCompile Include="code\Physics.cpp" />
     <ClCompile Include="code\User.cpp" />
+    <ClCompile Include="lib\GLFramework\ESShader.cpp" />
+    <ClCompile Include="lib\GLFramework\ESShapes.cpp" />
+    <ClCompile Include="lib\GLFramework\ESTransform.cpp" />
+    <ClCompile Include="lib\GLFramework\ESUtil.cpp" />
+    <ClCompile Include="lib\GLFramework\ESUtil_winpc.cpp" />
+    <ClCompile Include="lib\GLFramework\ESUtil_winrpi.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="code\Actor.h" />
@@ -114,11 +122,18 @@
     <ClInclude Include="code\Director.h" />
     <ClInclude Include="code\Entity.h" />
     <ClInclude Include="code\GenericGrid.h" />
+    <ClInclude Include="code\GLUtils.h" />
     <ClInclude Include="code\InputData.h" />
     <ClInclude Include="code\LTexture.h" />
     <ClInclude Include="code\main.h" />
     <ClInclude Include="code\Physics.h" />
     <ClInclude Include="code\User.h" />
+    <ClInclude Include="lib\GLFramework\ESCommon.h" />
+    <ClInclude Include="lib\GLFramework\ESShader.h" />
+    <ClInclude Include="lib\GLFramework\ESShapes.h" />
+    <ClInclude Include="lib\GLFramework\ESTransform.h" />
+    <ClInclude Include="lib\GLFramework\ESUtil.h" />
+    <ClInclude Include="lib\GLFramework\ESUtil_win.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="code\map.txt" />

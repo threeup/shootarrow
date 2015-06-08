@@ -47,8 +47,8 @@ Core* Core::GetInstance()
 void Core::CoreStart()
 {
 	mDirector = new Director();
-	mDirector->WorldStart();
-	mDirector->ActorStart();
+	//mDirector->WorldStart();
+	//mDirector->ActorStart();
 }
 
 void Core::ClearData()
@@ -72,31 +72,36 @@ void Core::CoreLoopTick(bool& quit)
 	PollEvents(quit);
 
 
-	//Clear screen
-	SDL_SetRenderDrawColor(gRenderer, 0xFF, 0xFF, 0xFF, 0xFF);
-	SDL_RenderClear(gRenderer);
+	bool sdlWindow = false;
 
-
-	for (std::vector<Entity_ptr>::const_iterator iterator = mDirector->worldList.begin(),
-		end = mDirector->worldList.end();
-		iterator != end;
-	++iterator)
+	if (sdlWindow)
 	{
-		Entity_ptr entity = *iterator;
-		mCamera->DrawEntity(entity);
-	}
+		//Clear screen
+		SDL_SetRenderDrawColor(gRenderer, 0xFF, 0xFF, 0xFF, 0xFF);
+		SDL_RenderClear(gRenderer);
 
-	for (std::vector<Entity_ptr>::const_iterator iterator = mDirector->actorList.begin(),
-		end = mDirector->actorList.end();
-		iterator != end; 
-		++iterator) 
-	{
-		Entity_ptr entity = *iterator;
-		mCamera->DrawEntity(entity);
+
+		for (std::vector<Entity_ptr>::const_iterator iterator = mDirector->worldList.begin(),
+			end = mDirector->worldList.end();
+			iterator != end;
+		++iterator)
+		{
+			Entity_ptr entity = *iterator;
+			mCamera->DrawEntity(entity);
+		}
+
+		for (std::vector<Entity_ptr>::const_iterator iterator = mDirector->actorList.begin(),
+			end = mDirector->actorList.end();
+			iterator != end;
+		++iterator)
+		{
+			Entity_ptr entity = *iterator;
+			mCamera->DrawEntity(entity);
+		}
+
+		//Update screen
+		SDL_RenderPresent(gRenderer);
 	}
-		
-	//Update screen
-	SDL_RenderPresent(gRenderer);
 }
 
 void Core::PollEvents(bool &quit)

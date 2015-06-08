@@ -41,7 +41,7 @@ void User::DecideInput()
 #ifdef _WIN32
 			double duration = std::clock() - start;
 			double fps = 400 / duration * 1000;
-			printf("duration%f  %f\n", duration, fps);
+			//printf("duration%f  %f\n", duration, fps);
 #endif            
 			start = std::clock();
 		}
